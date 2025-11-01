@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Notera2</string>
+    <string name="app_name_inside_app">Notera2</string>
+    <string name="format_bar_description_more">More</string>
+    <string name="format_bar_description_page">Page Break</string>
+
+    <string name="_0_00">0:00</string>
+</resources>
+
