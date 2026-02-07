@@ -3,4 +3,10 @@
 
     <style name="Theme.DevAudioReccordings" parent="android:Theme.Material.Light.NoActionBar" />
 
+    <style name="Theme.DevAudioReccordings.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@android:color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="postSplashScreenTheme">@style/Theme.DevAudioReccordings</item>
+    </style>
+
 </resources>

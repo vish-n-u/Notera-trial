@@ -53,6 +53,7 @@ import androidx.compose.material.icons.outlined.LightMode
 import androidx.compose.material.icons.outlined.LocalCafe
 import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material.icons.outlined.Palette
+import androidx.compose.material.icons.outlined.PlayArrow
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.PhoneAndroid
 import androidx.compose.material.icons.outlined.Workspaces
@@ -112,6 +113,7 @@ import com.example.devaudioreccordings.ui.theme.purpleScheme.PurpleLightScheme
 import com.example.devaudioreccordings.ui.theme.redScheme.RedLightScheme
 import com.example.devaudioreccordings.ui.theme.tealScheme.TealLightScheme
 import com.example.devaudioreccordings.ui.theme.whiteScheme.WhiteLightScheme
+import com.example.devaudioreccordings.ui.theme.orangeScheme.OrangeLightScheme
 import com.example.devaudioreccordings.ui.theme.yellowScheme.YellowLightScheme
 import com.example.devaudioreccordings.user
 import com.example.devaudioreccordings.viewModals.AppViewModel
@@ -158,6 +160,7 @@ fun SettingsScreen(
 //        Color(0xFFFFA500), // Orange
         Color(0xFFDEB887), // Burlywood/Beige
         Color(0xFFFFFFFF), // White
+        Color(0xFFF00FF), //Orange
         Color(0xFF2F4F4F)  // Dark Slate Gray
     )
     val colorSchemeOptions = mapOf<String, Color>(
@@ -173,6 +176,7 @@ fun SettingsScreen(
         AppColorTheme.BLACK.toString() to BlackLightScheme.primaryContainer,
         AppColorTheme.WHITE.toString() to WhiteLightScheme.primaryContainer,
         AppColorTheme.DEEP_GREEN.toString() to DeepGreenLightScheme.primaryContainer,
+         AppColorTheme.ORANGE.toString() to OrangeLightScheme.primaryContainer,
         AppColorTheme.SYSTEM.toString() to if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) dynamicDarkColorScheme(
             context
         ).primaryContainer else GreenLightScheme.primaryContainer
@@ -397,6 +401,15 @@ fun SettingsScreen(
 //                    context.startActivity(intent)
 //                }
 //            )
+            SettingsItem(
+                icon = Icons.Outlined.PlayArrow,
+                title = "Onboarding",
+                subtitle = "View the onboarding screens again",
+                onClick = {
+                    appViewModel.showSplashPreview.value = true
+                }
+            )
+
             SettingsItem(
                 icon = Icons.Outlined.Lock,
                 title = "Privacy Policy",

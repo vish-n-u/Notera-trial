@@ -1,0 +1,32 @@
+# Build outputs
+build/
+app/build/
+.gradle/
+
+# IDE files
+.idea/
+*.iml
+
+# Generated files
+captures/
+output.json
+
+# Binary files
+*.apk
+*.aab
+*.jks
+*.keystore
+app/libs/*.jar
+app/libs/*.aar
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets
+local.properties
+google-services.json
+
+# NDK
+.externalNativeBuild/
+.cxx/

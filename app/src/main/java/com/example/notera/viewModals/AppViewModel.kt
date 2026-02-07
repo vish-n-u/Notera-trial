@@ -63,6 +63,8 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     lateinit var dataStoreDataFlow: Flow<Preferences>
 
     val isFirstLaunch = mutableStateOf(true)
+    val isReady = mutableStateOf(false)
+    val showSplashPreview = mutableStateOf(false)
 
     init {
 
@@ -83,6 +85,7 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                     useAppTheme.value = false
 
                 }
+                isReady.value = true
 
 
             }

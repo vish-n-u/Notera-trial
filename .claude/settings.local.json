@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gradlew.bat assembleDebug:*)",
+      "Bash(cmd /c:*)",
+      "Bash(./gradlew.bat assembleDebug:*)",
+      "Bash(.\\\\gradlew.bat assembleDebug:*)",
+      "Bash(ren \"C:\\\\Users\\\\vishn\\\\AndroidStudioProjects\\\\Notera\\\\app\\\\src\\\\main\\\\java\\\\com\\\\example\\\\notera\\\\SplashScreen.kt\" \"OnboardingScreen.kt\")",
+      "Bash(cmd.exe /c \"gradlew.bat assembleDebug\")"
+    ]
+  }
+}

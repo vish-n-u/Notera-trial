@@ -64,6 +64,7 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$room_version")
     implementation("com.google.firebase:firebase-appcheck-debug")
     implementation("androidx.core:core-ktx:1.16.0")
+    implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("com.google.firebase:firebase-appcheck-playintegrity")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.12.0")
@@ -74,6 +75,7 @@ dependencies {
     // ✅ Aztec Glide loader (provides GlideImageLoader & GlideVideoThumbnailLoader)
     implementation("androidx.webkit:webkit:1.8.0")
     implementation("org.wordpress:aztec:v2.1.4")
+    implementation ("com.arthenica:smart-exception-java:0.1.1")
 
     // ✅ Glide image library (required for GlideImageLoader)
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.36.0")

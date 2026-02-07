@@ -27,6 +27,8 @@ import com.example.devaudioreccordings.ui.theme.tealScheme.TealDarkScheme
 import com.example.devaudioreccordings.ui.theme.tealScheme.TealLightScheme
 import com.example.devaudioreccordings.ui.theme.whiteScheme.WhiteDarkScheme
 import com.example.devaudioreccordings.ui.theme.whiteScheme.WhiteLightScheme
+import com.example.devaudioreccordings.ui.theme.orangeScheme.OrangeDarkScheme
+import com.example.devaudioreccordings.ui.theme.orangeScheme.OrangeLightScheme
 import com.example.devaudioreccordings.ui.theme.yellowScheme.YellowDarkScheme
 import com.example.devaudioreccordings.ui.theme.yellowScheme.YellowLightScheme
 
@@ -89,6 +91,10 @@ fun AppThemexx(
                 if (darkTheme) colorSchemes[AppColorTheme.WHITE.toString()]!!["darkColors"]!!
                 else colorSchemes[AppColorTheme.WHITE.toString()]!!["lightColors"]!!
             }
+             AppColorTheme.ORANGE.toString() -> {
+                if (darkTheme) colorSchemes[AppColorTheme.ORANGE.toString()]!!["darkColors"]!!
+                else colorSchemes[AppColorTheme.ORANGE.toString()]!!["lightColors"]!!
+            }
             AppColorTheme.DEEP_GREEN.toString() -> {
                 if (darkTheme) colorSchemes[AppColorTheme.DEEP_GREEN.toString()]!!["darkColors"]!!
                 else colorSchemes[AppColorTheme.DEEP_GREEN.toString()]!!["lightColors"]!!
@@ -125,6 +131,7 @@ val colorSchemes = mapOf(
     AppColorTheme.TEAL.toString() to mapOf("darkColors" to TealDarkScheme, "lightColors" to TealLightScheme),
     AppColorTheme.BLACK.toString() to mapOf("darkColors" to BlackDarkScheme, "lightColors" to BlackLightScheme),
     AppColorTheme.WHITE.toString() to mapOf("darkColors" to WhiteDarkScheme, "lightColors" to WhiteLightScheme),
+    AppColorTheme.ORANGE.toString() to mapOf("darkColors" to OrangeDarkScheme, "lightColors" to OrangeLightScheme),
     AppColorTheme.DEEP_GREEN.toString() to mapOf("darkColors" to DeepGreenDarkScheme, "lightColors" to DeepGreenLightScheme)
 
 

@@ -19,7 +19,9 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.compose.foundation.background
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -98,7 +100,7 @@ class MainActivity : ComponentActivity() {
     var showDialogBoxOf by mutableStateOf<dialogBoxPermissionCategory?>(null)
     var showErrorDialogBox = mutableStateOf(false)
     var showErrorMessage = mutableStateOf("")
-    var showSplashScreen = mutableStateOf(true)
+    var showOnboarding = mutableStateOf(true)
 
 
     val addMediaViewModel = AddMediaViewModel()
@@ -518,6 +520,9 @@ class MainActivity : ComponentActivity() {
 
 
 
+        val splashScreen = installSplashScreen()
+        splashScreen.setKeepOnScreenCondition { !appViewModel.isReady.value }
+
         super.onCreate(savedInstanceState)
         setContent {
             AppThemexx(
@@ -531,8 +536,21 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize()
                         .background(MaterialTheme.colorScheme.primary),
                 ) {
+                    // Once DataStore is ready, decide whether to show onboarding
+                    LaunchedEffect(appViewModel.isReady.value) {
+                        if (appViewModel.isReady.value) {
+                            showOnboarding.value = appViewModel.isFirstLaunch.value
+                        }
+                    }
 
-                    if (!showSplashScreen.value) {
+                    // Observe splash preview request from Settings
+                    if (appViewModel.showSplashPreview.value) {
+                        appViewModel.showSplashPreview.value = false
+                        appViewModel.isFirstLaunch.value = true
+                        showOnboarding.value = true
+                    }
+
+                    if (!showOnboarding.value) {
                         val context = LocalContext.current
                         PermissionDialogBoxContent[showDialogBoxOf]?.let {
                             DialogBoxForPermissionDenial(
@@ -560,8 +578,8 @@ class MainActivity : ComponentActivity() {
                             addMediaViewModel.isTextGettingGenerated.value
                         )
                     } else {
-                        SplashScreen(viewModel = appViewModel, onSplashScreenComplete = {
-                            showSplashScreen.value = false
+                        OnboardingScreen(viewModel = appViewModel, onOnboardingComplete = {
+                            showOnboarding.value = false
                             CoroutineScope(Dispatchers.IO).launch {
                                 appViewModel.firstLaunch()
                             }
@@ -965,7 +983,7 @@ enum class dialogBoxPermissionCategory {
 
 
 enum class AppColorTheme {
-    GREEN, BLUE, YELLOW, PURPLE, TEAL, GREY, RED, BLACK, WHITE, DEEP_GREEN, SYSTEM
+    GREEN, BLUE, YELLOW, PURPLE, TEAL, GREY, RED, BLACK, WHITE, DEEP_GREEN, ORANGE,SYSTEM
 }
 
 enum class AppTheme {
